@@ -1,0 +1,4 @@
+OPTIMIZATIONS:
+	Solve the inverse metric analyitically instead of numerically (biggest speed up)
+	
+	

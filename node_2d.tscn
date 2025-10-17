@@ -1,0 +1,150 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp7npv8q7pe08"]
+
+[ext_resource type="Script" uid="uid://ct7nipns431ci" path="res://ray_tracer.gd" id="1_epypp"]
+[ext_resource type="Script" uid="uid://sdtxepicswgp" path="res://fps_label.gd" id="2_0e48y"]
+[ext_resource type="Script" uid="uid://b8uta64u4mp4q" path="res://flycam.gd" id="2_q6r6c"]
+[ext_resource type="Material" uid="uid://xdxo6iqtlgtf" path="res://godel_universe.tres" id="3_0hol4"]
+
+[node name="Node2D" type="Node3D"]
+script = ExtResource("1_epypp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 1.6, 100)
+current = true
+script = ExtResource("2_q6r6c")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = ExtResource("3_0hol4")
+offset_right = 579.0
+offset_bottom = 324.5
+scale = Vector2(2, 2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="FPSLabel" type="Label" parent="CanvasLayer"]
+offset_right = 160.0
+offset_bottom = 23.0
+script = ExtResource("2_0e48y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_top = 25.0
+offset_right = 259.0
+offset_bottom = 87.0
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Schwarzschild Blackhole"
+popup/item_0/id = 0
+popup/item_1/text = "Kerr-Newman Blackhole"
+popup/item_1/id = 1
+popup/item_2/text = "Alcubierre Drive"
+popup/item_2/id = 2
+
+[node name="SchwarzschildParameters" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/SchwarzschildParameters"]
+layout_mode = 2
+text = "m: 00"
+
+[node name="mass" type="HSlider" parent="CanvasLayer/VBoxContainer/SchwarzschildParameters"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+min_value = -100.0
+step = 0.1
+
+[node name="KerrNewmanParameters" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Mass" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/KerrNewmanParameters"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/KerrNewmanParameters/Mass"]
+layout_mode = 2
+text = "m: 00"
+
+[node name="Mass" type="HSlider" parent="CanvasLayer/VBoxContainer/KerrNewmanParameters/Mass"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+step = 0.1
+
+[node name="A" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/KerrNewmanParameters"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/KerrNewmanParameters/A"]
+layout_mode = 2
+text = "α : 00"
+
+[node name="A" type="HSlider" parent="CanvasLayer/VBoxContainer/KerrNewmanParameters/A"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+min_value = -100.0
+step = 0.1
+
+[node name="Q" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/KerrNewmanParameters"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/KerrNewmanParameters/Q"]
+layout_mode = 2
+text = "Q: 00"
+
+[node name="Q" type="HSlider" parent="CanvasLayer/VBoxContainer/KerrNewmanParameters/Q"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+min_value = -100.0
+step = 0.5
+
+[node name="AlcubierreParameters" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Velocity" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/AlcubierreParameters"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/AlcubierreParameters/Velocity"]
+layout_mode = 2
+text = "v: 00"
+
+[node name="Velocity" type="HSlider" parent="CanvasLayer/VBoxContainer/AlcubierreParameters/Velocity"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.01
+
+[node name="R" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/AlcubierreParameters"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/AlcubierreParameters/R"]
+layout_mode = 2
+text = "R: 00"
+
+[node name="R" type="HSlider" parent="CanvasLayer/VBoxContainer/AlcubierreParameters/R"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Sigma" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/AlcubierreParameters"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/AlcubierreParameters/Sigma"]
+layout_mode = 2
+text = "σ: 00"
+
+[node name="Sigma" type="HSlider" parent="CanvasLayer/VBoxContainer/AlcubierreParameters/Sigma"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[connection signal="item_selected" from="CanvasLayer/VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="value_changed" from="CanvasLayer/VBoxContainer/SchwarzschildParameters/mass" to="." method="_on_schwarzschild_mass_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/VBoxContainer/KerrNewmanParameters/Mass/Mass" to="." method="_on_kerr_newman_mass_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/VBoxContainer/KerrNewmanParameters/A/A" to="." method="_on_kerr_newman_a_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/VBoxContainer/KerrNewmanParameters/Q/Q" to="." method="_on_kerr_newman_q_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/VBoxContainer/AlcubierreParameters/Velocity/Velocity" to="." method="_on_alcubierre_velocity_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/VBoxContainer/AlcubierreParameters/R/R" to="." method="_on_alcubierre_r_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/VBoxContainer/AlcubierreParameters/Sigma/Sigma" to="." method="_on_alcubierre_sigma_value_changed"]

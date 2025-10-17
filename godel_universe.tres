@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://xdxo6iqtlgtf"]
+
+[ext_resource type="Shader" uid="uid://ccuk77cbpsygl" path="res://godel.gdshader" id="1_qtxye"]
+[ext_resource type="Texture2D" uid="uid://btfjh1jtue28u" path="res://disk.jpeg" id="2_xctvx"]
+[ext_resource type="CompressedCubemap" uid="uid://cvmblm6jd05nh" path="res://cubemap/cubemap_template_2x3.webp" id="3_0bhqg"]
+
+[resource]
+shader = ExtResource("1_qtxye")
+shader_parameter/mass = 1.14
+shader_parameter/disk_texture = ExtResource("2_xctvx")
+shader_parameter/width = 200
+shader_parameter/height = 100
+shader_parameter/camera_position = Vector3(0, -1.645, 38.21)
+shader_parameter/camera_rotation = Basis(1, 0, 0, 0, 1.08, 0, 0, 0, 0.965)
+shader_parameter/fov = 0.8
+shader_parameter/max_ray_trace_steps = 311
+shader_parameter/step_size = 2.22
+shader_parameter/step_size_drop_factor = 1000.0
+shader_parameter/sky_map = ExtResource("3_0bhqg")

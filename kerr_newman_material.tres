@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://b3nn006sugf0o"]
+
+[ext_resource type="Shader" uid="uid://dr6adxfhcdx6d" path="res://kerr_newman.gdshader" id="1_a1ha8"]
+[ext_resource type="Texture2D" uid="uid://btfjh1jtue28u" path="res://disk.jpeg" id="2_31vou"]
+[ext_resource type="CompressedCubemap" uid="uid://cvmblm6jd05nh" path="res://cubemap/cubemap_template_2x3.webp" id="3_pixe3"]
+
+[resource]
+shader = ExtResource("1_a1ha8")
+shader_parameter/mass = 1.14
+shader_parameter/a = -0.045
+shader_parameter/Q = 1.13
+shader_parameter/accretion_disk_radius = 23.65
+shader_parameter/accretion_disk_angle = Vector2(0, 0)
+shader_parameter/disk_thickness = 0.3
+shader_parameter/band_color = Color(2.25252e-05, 0.907711, 0.91671, 1)
+shader_parameter/band_frequency = 3.79
+shader_parameter/disk_texture = ExtResource("2_31vou")
+shader_parameter/width = 200
+shader_parameter/height = 100
+shader_parameter/camera_position = Vector3(0, -1.645, 38.21)
+shader_parameter/camera_rotation = Basis(1, 0, 0, 0, 1.08, 0, 0, 0, 0.965)
+shader_parameter/fov = 0.8
+shader_parameter/max_ray_trace_steps = 311
+shader_parameter/step_size = 2.22
+shader_parameter/step_size_drop_factor = 1000.0
+shader_parameter/sky_map = ExtResource("3_pixe3")
